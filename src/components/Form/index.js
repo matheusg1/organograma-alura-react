@@ -1,6 +1,7 @@
 import TextInput from "../TextInput";
 import "./Form.css"
-import ListaSuspensa from "../DropdownList";
+import DropdownList from "../DropdownList";
+import Button from "../Button";
 
 const Form = () => {
     const times = [
@@ -11,14 +12,21 @@ const Form = () => {
         "Mobile",
         "Inovação e gestão"
     ]
+
+    const aoSalvar = (e) => {
+        e.preventDefault();
+        console.log("Form submetido");
+        console.log(e.Nome);
+    }
     return (
         <section className="formulario">
-            <form>
+            <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
                 <TextInput label="Nome" placeholder="Digite seu nome"></TextInput>
                 <TextInput label="Cargo" placeholder="Digite seu cargo"></TextInput>
                 <TextInput label="Imagem" placeholder="Digite o endereço da imagem" />
-                <ListaSuspensa label="Time" itens={times}/>
+                <DropdownList label="Time" itens={times}/>
+                <Button>Criar card</Button>
             </form>
         </section>
     )
