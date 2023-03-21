@@ -4,8 +4,9 @@ const DropdownList = (props) => {
     return (
         <div className="lista-suspensa">
             <label>{props.label}</label>
-            <select>
-                {props.itens.map(i => <option key={i}>{i}</option>)}
+            <select onChange={e => props.aoAlterar(e.target.value)}
+            required={props.required}
+            value={props.value}>{props.itens.map(i => <option key={i}>{i}</option>)}
             </select>
         </div>
     );

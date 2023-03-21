@@ -17,10 +17,11 @@ const Form = () => {
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
+    const [time, setTime] = useState('')
 
     const aoSalvar = (e) => {
-        e.preventDefault();
-        console.log("Form submetido " + nome + cargo + imagem);
+        e.preventDefault();        
+        console.log("Form submetido ", nome, cargo, imagem, time);
 
     }
     return (
@@ -34,15 +35,19 @@ const Form = () => {
 
                 <TextInput
                     label="Cargo"
-                    aoAlterar={valor => setNome(valor)}
+                    aoAlterar={valor => setCargo(valor)}
                     placeholder="Digite seu cargo"></TextInput>
 
                 <TextInput
                     label="Imagem"
-                    aoAlterar={valor => setNome(valor)}
-                    placeholder="Digite o endereço da imagem" />
+                    aoAlterar={valor => setImagem(valor)}
+                    placeholder="Digite o endereço da imagem"></TextInput>
                     
-                <DropdownList label="Time" itens={times} />
+                <DropdownList 
+                label="Time"
+                itens={times}
+                value={time}
+                aoAlterar={valor => setTime(valor)}/>
                 <Button>Criar card</Button>
             </form>
         </section>

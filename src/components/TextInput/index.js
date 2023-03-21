@@ -1,19 +1,19 @@
 import { useState } from "react"
 import "./TextInput.css"
 const TextInput = (props) => {
-    const placeHolderModificada = `${props.placeholder}...`
+    const placeholderModificada = `${props.placeholder}...`
     
     const [valor, setValor] = useState('')
 
-    const aoDigitar = (e) => {
-        setValor(e.target.value)
-        console.log(valor)
+    const aoDigitar = (e) => {     
+        props.aoAlterar(e.target.value)   
+        setValor(e.target.value)        
     }
     
     return (
         <div className="campo-texto">
             <label>{props.label}</label>
-            <input onChange={aoDigitar} placeholder={placeHolderModificada}/>
+            <input value={props.valor} onChange={aoDigitar} placeholder={placeholderModificada}/>
         </div>
     );
 }
